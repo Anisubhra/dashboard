@@ -61,7 +61,7 @@ export class SummaryService {
       userStats = [{ ...newStats, total: 1 }];
     }
 
-    console.log(userStats);
+    // console.log(userStats);
     userStats = JSON.stringify(userStats);
     this.user_stats = userStats;
     localStorage.setItem('user_stats', userStats);

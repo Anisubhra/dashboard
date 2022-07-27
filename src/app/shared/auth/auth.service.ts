@@ -27,6 +27,7 @@ export class AuthService {
         }
 
         newUsers = JSON.stringify(newUsers);
+        this.users= newUsers;
         localStorage.setItem('users', newUsers);
 
         res(newUsers);
