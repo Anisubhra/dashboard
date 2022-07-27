@@ -28,6 +28,7 @@ export class AuthService {
 
         newUsers = JSON.stringify(newUsers);
         localStorage.setItem('users', newUsers);
+
         res(newUsers);
       }
       catch (e) {
@@ -46,21 +47,28 @@ export class AuthService {
 
   signinUser(name: string, password: string) {
     return new Promise((resolve, reject) => {
-      if (this.users) {
-        const allUsers = JSON.parse(this.users);
-        const user = allUsers.find(user => user.name == name && user.password == password);
+      try {
+        if (this.users) {
+          const allUsers = JSON.parse(this.users);
+          const user = allUsers.find(user => user.name == name && user.password == password);
 
-        if (user) {
-          const loggedInUser = JSON.stringify(user);
-          this.user = user;
-          localStorage.setItem('user', loggedInUser);
+          if (user) {
+            const loggedInUser = JSON.stringify(user);
+            this.user = user;
+            localStorage.setItem('user', loggedInUser);
 
-          
-          resolve(user);
+            resolve(user);
+          }
+          else {
+            throw "user not found!";
+          }
         }
         else {
-          reject(user);
+          throw "user not found!";
         }
+      }
+      catch (e) {
+        reject(e);
       }
     });
 
