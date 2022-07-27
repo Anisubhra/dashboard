@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "postinstall": "ngcc",
+    "deploy": "ng build --prod --base-href \"https://Anisubhra.github.io/dashboard/\" && angular-cli-ghpages --dir=dist"
   },
   "private": true,
   "dependencies": {
